@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-@onready var sprite2d = $Sprite2D
+@onready var animated_sprite = $AnimatedSprite2D
 
-const SPEED = 300.0
+const SPEED = 100.0
 const JUMP_VELOCITY = -400
 
-#var dash = 5000
-#var airdashable: bool = true
+var dash = 5000
+var airdashable: bool = true
 var gravity_normal = 14
 var gravity_wall = 5
 var wall_push_force = 100
@@ -28,20 +28,20 @@ func _physics_process(delta):
 	elif direction: velocity.x = direction * SPEED
 	else: velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	#if airdashable:
-		#if !is_on_floor():
-			#if velocity.x > 0 && Input.is_key_pressed(KEY_Z):
-					#velocity.x += dash
-					#velocity.y=0
-					#airdashable = false
-			#elif velocity.x < 0 && Input.is_key_pressed(KEY_Z):
-					#velocity.x -= dash
-					#velocity.y=0
-					#airdashable = false
+	if airdashable:
+		if !is_on_floor()  && Input.is_key_pressed(KEY_Z):
+			if velocity.x > 0:
+					velocity.x += dash
+					velocity.y=0
+					airdashable = false
+			elif velocity.x < 0:
+					velocity.x -= dash
+					velocity.y=0
+					airdashable = false
 				
 	
 	if is_on_floor() or wall_contact_coyote > 0:
-		#airdashable = true
+		airdashable = true
 		if Input.is_action_just_pressed("ui_accept"):
 			velocity.y = JUMP_VELOCITY
 			if wall_contact_coyote > 0:
@@ -63,9 +63,18 @@ func _physics_process(delta):
 	
 	
 	
+	#animation
+	if direction > 0: animated_sprite.flip_h = false
+	elif direction < 0: animated_sprite.flip_h = true
 	
-	if direction > 0: sprite2d.flip_h = false
-	elif direction < 0: sprite2d.flip_h = true
+	if direction == 0:
+		animated_sprite.play("idle")
+	elif direction != 0 && is_on_floor(): 
+		animated_sprite.play("run")
+	elif direction != 0 && is_on_wall():
+		animated_sprite.play("jump")
+	else: 
+		animated_sprite.play("jump")
 	
 	move_and_slide()
 	

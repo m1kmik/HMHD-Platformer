@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://df32rp12wqdxk"]
+
+[ext_resource type="Script" uid="uid://bmshl35fvo0ij" path="res://Scenes/robot.gd" id="1_2vrla"]
+[ext_resource type="Texture2D" uid="uid://denivly54xl67" path="res://Assets/robot.png" id="1_lp65t"]
+[ext_resource type="PackedScene" uid="uid://bvg740pfyg65i" path="res://Scenes/death_zone.tscn" id="3_6phhs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vrla"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6phhs"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwnub"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntbue"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s4wd"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cjo4"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcvsp"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp65t"]
+atlas = ExtResource("1_lp65t")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xepy2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vrla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6phhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwnub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntbue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s4wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cjo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcvsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp65t")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xepy2"]
+size = Vector2(9, 17)
+
+[node name="Robot" type="Node2D" unique_id=456841604]
+script = ExtResource("1_2vrla")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1461488379]
+sprite_frames = SubResource("SpriteFrames_xepy2")
+animation = &"run"
+autoplay = "run"
+frame = 7
+frame_progress = 0.8363476
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1033125946]
+target_position = Vector2(9, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1004457618]
+target_position = Vector2(-9, 0)
+
+[node name="DeathZone" parent="." unique_id=89876518 instance=ExtResource("3_6phhs")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone" unique_id=575723916]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_xepy2")
