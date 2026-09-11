@@ -1,20 +1,26 @@
 [gd_scene format=3 uid="uid://dgnbyppfmkv2"]
 
-[ext_resource type="Script" uid="uid://c7okbdek7fh0d" path="res://Scenes/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://1vbbsqjpwlq4" path="res://Assets/idle.png" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://c7okbdek7fh0d" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://dypcmw8ubl436" path="res://Assets/walk and idle.png" id="2_cvnsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xepy2"]
-size = Vector2(15, 23)
+size = Vector2(13, 20)
 
 [node name="Player" type="CharacterBody2D" unique_id=1939187090]
 script = ExtResource("1_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750640186]
-position = Vector2(-0.5, 4.5)
+position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_xepy2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1374666137]
-texture = ExtResource("1_v0iea")
+position = Vector2(0, 6)
+texture = ExtResource("2_cvnsp")
+region_enabled = true
+region_rect = Rect2(52.77778, 3.1111107, 14.666664, 22.222221)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=104842313]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_bottom = 500
