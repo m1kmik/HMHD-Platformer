@@ -1,0 +1,27 @@
+[gd_scene format=4 uid="uid://mts8epj7oimn"]
+
+[ext_resource type="PackedScene" uid="uid://clvkx0m8a3srq" path="res://Scenes/tile_map_layer.tscn" id="1_k5f4k"]
+[ext_resource type="PackedScene" uid="uid://dgnbyppfmkv2" path="res://Scenes/player.tscn" id="2_6phgx"]
+[ext_resource type="PackedScene" uid="uid://ctaci5dqrql0f" path="res://Scenes/Objects/moving_platform.tscn" id="3_6phgx"]
+[ext_resource type="PackedScene" uid="uid://bhge1mstkocg4" path="res://Scenes/Objects/one_way_platform_unfallable.tscn" id="4_wqkje"]
+[ext_resource type="PackedScene" uid="uid://c6qntbr3i0qf3" path="res://Scenes/Objects/fallable_one_way_platform.tscn" id="5_wqkje"]
+
+[node name="level" type="Node2D" unique_id=628591892]
+
+[node name="Player" parent="." unique_id=1939187090 instance=ExtResource("2_6phgx")]
+position = Vector2(178, 204)
+
+[node name="TileMapLayer" parent="." unique_id=1016519415 instance=ExtResource("1_k5f4k")]
+tile_map_data = PackedByteArray("AAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAASAA4AAAAAAAAAAAATAA4AAAAAAAAAAAAUAA4AAAAAAAAAAAAHAA8AAAAAAAAAAAAHABAAAAAAAAAAAAAHABEAAAAAAAAAAAAHABIAAAAAAAAAAAAHABMAAAAAAAAAAAAHABQAAAAAAAAAAAAHABUAAAAAAAAAAAAUAA8AAAAAAAAAAAAUABAAAAAAAAAAAAAUABEAAAAAAAAAAAAUABIAAAAAAAAAAAAHABYAAAAAAAAAAAAbAA8AAAAAAAAAAAAcAA8AAAAAAAAAAAAdAA8AAAAAAAAAAAAeAA8AAAAAAAAAAAAfAA8AAAAAAAAAAAAgAA8AAAAAAAAAAAAhAA8AAAAAAAAAAAAeAAwAAAAAAAAAAAAfAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAhAAwAAAAAAAAAAAAiAA8AAAAAAAAAAAAjAA8AAAAAAAAAAAAkAA8AAAAAAAAAAAAlAA8AAAAAAAAAAAAKAA4AAAAAAAAAAAALAA4AAAAAAAAAAAAMAA4AAAAAAAAAAAANAA4AAAAAAAAAAAAOAA4AAAAAAAAAAAAlAA4AAAAAAAAAAAAlAA0AAAAAAAAAAAAlAAwAAAAAAAAAAAAlAAsAAAAAAAAAAAAlAAoAAAAAAAAAAAAlAAkAAAAAAAAAAAAlAAgAAAAAAAAAAAAlAAcAAAAAAAAAAAAlAAYAAAAAAAAAAAAlAAUAAAAAAAAAAAAlAAQAAAAAAAAAAAAlAAMAAAAAAAAAAAAlAAIAAAAAAAAAAAAlAAEAAAAAAAAAAAAlAAAAAAAAAAAAAAA=")
+
+[node name="MovingPlatform" parent="." unique_id=1509761266 instance=ExtResource("3_6phgx")]
+position = Vector2(377, 256)
+
+[node name="OneWayPlatform" parent="." unique_id=458675507 instance=ExtResource("4_wqkje")]
+position = Vector2(261, 231)
+
+[node name="FallableOneWayPlatform" parent="." unique_id=2071644385 instance=ExtResource("5_wqkje")]
+position = Vector2(173, 179)
+
+[node name="FallableOneWayPlatform2" parent="." unique_id=94766452 instance=ExtResource("5_wqkje")]
+position = Vector2(271, 175)

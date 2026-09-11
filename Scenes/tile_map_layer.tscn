@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://clvkx0m8a3srq"]
+
+[ext_resource type="Texture2D" uid="uid://b2dwkdo2h7vgd" path="res://Assets/Grass_Middle.png" id="1_qbaa6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cujs"]
+texture = ExtResource("1_qbaa6")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_xepy2"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_8cujs")
+
+[node name="TileMapLayer" type="TileMapLayer" unique_id=1016519415]
+tile_set = SubResource("TileSet_xepy2")

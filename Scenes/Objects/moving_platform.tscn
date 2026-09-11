@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ctaci5dqrql0f"]
+
+[ext_resource type="Texture2D" uid="uid://ckkwy1h6slexe" path="res://Assets/Tiles/tileset.png" id="1_3al7h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xepy2"]
+size = Vector2(49, 12)
+
+[sub_resource type="Animation" id="Animation_1yepl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3al7h"]
+resource_name = "move_loop"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-125, 3), Vector2(0, 3), Vector2(0, 130), Vector2(-125, 130), Vector2(-125, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1yepl"]
+_data = {
+&"RESET": SubResource("Animation_1yepl"),
+&"move_loop": SubResource("Animation_3al7h")
+}
+
+[node name="MovingPlatform" type="Node2D" unique_id=1826612072]
+
+[node name="Platform" type="AnimatableBody2D" parent="." unique_id=1509761266]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform" unique_id=173730572]
+texture = ExtResource("1_3al7h")
+region_enabled = true
+region_rect = Rect2(0, 143.5, 48.5, 16.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=430350526]
+position = Vector2(0.5, -2)
+shape = SubResource("RectangleShape2D_xepy2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform" unique_id=401422881]
+libraries/ = SubResource("AnimationLibrary_1yepl")
+autoplay = &"move_loop"

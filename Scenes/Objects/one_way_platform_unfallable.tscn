@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bhge1mstkocg4"]
+
+[ext_resource type="Texture2D" uid="uid://ckkwy1h6slexe" path="res://Assets/Tiles/tileset.png" id="1_2arg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xepy2"]
+size = Vector2(52, 16.5)
+
+[node name="OneWayPlatform" type="Node2D" unique_id=1849123061]
+
+[node name="OneWay_Platform" type="Sprite2D" parent="." unique_id=587411005]
+position = Vector2(0, 1)
+texture = ExtResource("1_2arg1")
+region_enabled = true
+region_rect = Rect2(126.5, 31.5, 51, 17)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OneWay_Platform" unique_id=1065166390]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OneWay_Platform/StaticBody2D" unique_id=1791805651]
+position = Vector2(1, -0.25)
+shape = SubResource("RectangleShape2D_xepy2")
+one_way_collision = true
+one_way_collision_margin = 10.0
